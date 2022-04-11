@@ -12,16 +12,25 @@
             $this->conn = $db;
         }
 
+        /** 
+         * Get all data
+        */
         public function index() {
             $query = 'SELECT * FROM ' . $this->table;
             return $this->conn->query($query)->fetchAll();
         }
 
+        /** 
+         * Get specific data
+        */
         public function show() {
             $query = 'SELECT * FROM ' . $this->table . ' WHERE id = ' . $this->id;
             return $this->conn->query($query)->fetch();
         }
 
+        /** 
+         * Create a new entry
+        */
         public function store() {
             $query = 'INSERT INTO ' . $this->table . ' (collun) VALUES ("' . $this->collun . '")';
             try {
@@ -34,6 +43,9 @@
             }
         }
 
+        /** 
+         * Update an entry
+        */
         public function update() {
             $query = 'UPDATE tokens SET collun = "' . $this->collun . '" WHERE id = ' . $this->id;
             try {
@@ -45,6 +57,9 @@
             }
         }
 
+        /** 
+         * Delete an entry
+        */
         public function destroy() {
             $query = 'DELETE FROM ' . $this->table . ' WHERE id = ' . $this->id;
             try {
